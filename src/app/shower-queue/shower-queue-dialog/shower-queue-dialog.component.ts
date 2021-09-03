@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { QueueItem } from '../shower-queue.component';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'shower-queue-dialog',
@@ -9,13 +11,24 @@ import { QueueItem } from '../shower-queue.component';
   styleUrls: ['./shower-queue-dialog.component.scss']
 })
 export class ShowerQueueDialogComponent implements OnInit {
-  private qItems: AngularFirestoreCollection<QueueItem>;
+  private qItemsCollection: AngularFirestoreCollection<QueueItem>;
+  private qItems: Observable<any>;
+
   constructor(
     public dialogRef: MatDialogRef<ShowerQueueDialogComponent>,
     private afs: AngularFirestore,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.qItems = afs.collection<QueueItem>('items');
+    this.qItemsCollection = afs.collection<QueueItem>('items');
+    this.qItems = this.qItemsCollection.snapshotChanges()
+      .pipe(map(actions => actions.map(
+        a => (this.piper(a))
+      )));
+  }
+
+  private piper(a: any) {
+    const dat = { ...a.payload.doc.data(), id: a.payload.doc.id };
+    return dat;
   }
 
   ngOnInit(): void {
@@ -41,7 +54,6 @@ export class ShowerQueueDialogComponent implements OnInit {
 
   onOkClick(): void {
     this.saveData();
-    this.dialogRef.close();
   }
 
   private async saveData() {
@@ -53,16 +65,30 @@ export class ShowerQueueDialogComponent implements OnInit {
 
     // console.log(name, dateString, timeString, durationString);
     const date = new Date(dateString + "T" + timeString);
-    const newQItem = this.qItems.doc();
-    const res = await newQItem.set({
-      name: name,
-      date: date,
-      duration: duration
-    });
+    const endTime = this.addMinutes(date, duration);
+
+    const isValid = await this.validateTimeInterval(date, endTime);
+    console.log(isValid);
+
+    if (isValid) {
+      this.dialogRef.close();
+      const newQItem = this.qItemsCollection.doc();
+      const res = await newQItem.set({
+        name: name,
+        date: date,
+        duration: duration
+      });
+    } else {
+      alert('Someone has already taken that timeslot. Please select a different time to shower.')
+    }
   }
 
   private addMinutes(dt: Date, minutes: number) {
     return new Date(dt.getTime() + minutes * 60000);
+  }
+
+  private async validateTimeInterval(startTime: Date, endTime: Date) {
+    return await true;
   }
 
 }

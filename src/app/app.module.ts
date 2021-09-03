@@ -26,6 +26,8 @@ import { ChoresComponent } from './chores/chores.component'
 import { environment } from 'src/environments/environment';
 import { QueueItemComponent } from './shower-queue/queue-item/queue-item.component';
 import { ShowerQueueDialogComponent } from './shower-queue/shower-queue-dialog/shower-queue-dialog.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { ShowerQueueDialogComponent } from './shower-queue/shower-queue-dialog/s
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
