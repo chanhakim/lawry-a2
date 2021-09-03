@@ -11,10 +11,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 
-
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { NavbarModule, WavesModule } from 'angular-bootstrap-md';
-
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 
@@ -26,7 +22,8 @@ import { ChoresComponent } from './chores/chores.component'
 import { environment } from 'src/environments/environment';
 import { QueueItemComponent } from './shower-queue/queue-item/queue-item.component';
 import { ShowerQueueDialogComponent } from './shower-queue/shower-queue-dialog/shower-queue-dialog.component';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 
 @NgModule({
@@ -44,17 +41,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MDBBootstrapModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    NavbarModule,
-    WavesModule,
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatDatepickerModule
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
