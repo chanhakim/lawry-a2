@@ -1,0 +1,25 @@
+.page-container {
+	// border: 1px solid black;
+	padding: 1rem;
+}
+
+.shower-queue-header {
+	display: flex;
+	flex-direction: row;
+	// border: 1px solid green;
+	justify-content: space-between;
+	align-items: center
+}
+
+.shower-queue-body {
+	display: flex;
+	flex-direction: column;
+}
+
+.shower-queue-placeholder {
+	display: flex;
+	flex-direction: column;
+	// border: 1px solid green;
+}
+
+.shower-queue-footer {}

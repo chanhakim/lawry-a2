@@ -1,0 +1,22 @@
+.shower-queue-dialog-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.shower-queue-dialog-buttons {
+	// border: 1px solid black;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 100%;
+}
+
+.shower-queue-dialog-forms {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}

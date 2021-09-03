@@ -1,0 +1,17 @@
+<div class='page-container'>
+	<div class='shower-queue-header'>
+		<h2 style='margin: 0;'>Shower Queue</h2>
+		<button mat-icon-button (click)="openDialog()">
+			<mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+		</button>
+	</div>
+	<div class="shower-queue-body" *ngFor="let item of qItems | async">
+		<queue-item [name]="item.name" [date]="item.date" [startTime]="item.startTime" [endTime]="item.endTime"
+			[id]="item.id"></queue-item>
+	</div>
+	<div class="shower-queue-placeholder" *ngIf="(qItems | async)?.length == 0">
+		<p>No one is in the shower queue...</p>
+		<p>Grab the chance and reserve your spot!</p>
+	</div>
+
+</div>

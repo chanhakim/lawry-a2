@@ -1,0 +1,25 @@
+<div class="shower-queue-dialog-container">
+	<h2 mat-dialog-title>Join the shower queue 🚿</h2>
+	<div class="shower-queue-dialog-forms" mat-dialog-content>
+		<mat-form-field appearance="fill">
+			<mat-label>Name</mat-label>
+			<input id='nameField' matInput type='string' value="">
+		</mat-form-field>
+		<mat-form-field appearance="fill">
+			<mat-label>Date</mat-label>
+			<input id='dateField' matInput type='date' value="">
+		</mat-form-field>
+		<mat-form-field appearance="fill">
+			<mat-label>Time</mat-label>
+			<input id='timeField' matInput type='time' value="" step='900'>
+		</mat-form-field>
+		<mat-form-field appearance="fill">
+			<mat-label>Duration</mat-label>
+			<input id='durationField' matInput type='number' value="15">
+		</mat-form-field>
+	</div>
+	<div class="shower-queue-dialog-buttons" mat-dialog-actions>
+		<button mat-button (click)="onNoClick()">Cancel</button>
+		<button mat-button cdkFocusInitial (click)="onOkClick()">Ok</button>
+	</div>
+</div>

@@ -1,0 +1,28 @@
+.queue-item-container {
+	border-radius: 15px;
+	background-color: lightblue;
+	padding: 1rem;
+	padding-bottom: 0.3rem;
+	margin: 0.5rem 0;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: space-between;
+}
+
+.queue-item-left-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.queue-item-right-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+p {
+	margin: 0;
+}
