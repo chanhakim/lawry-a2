@@ -1,39 +1,33 @@
 <body style="margin: 1rem;">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span>Lawry A2</span>
+      <span style="flex: 1 1 auto;"></span>
+      <button mat-icon-button class=" example-icon" aria-label="Example icon-button with menu icon"
+        (click)="toggleMenu()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-  <!--Navbar-->
-  <mdb-navbar SideClass="navbar navbar-1 navbar-light amber lighten-2" [containerInside]="false">
+  <mat-toolbar id="menu-rows" style="display: none">
+    <mat-toolbar-row>
+      <span><a routerLink='/' routerLinkActive='active' (click)='closeMenu()'>Home<span
+            class="sr-only">(current)</span></a></span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span><a routerLink='/shower-queue' routerLinkActive='active' (click)='closeMenu()'>Shower Queue</a></span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span><a routerLink='/chores' routerLinkActive='active' (click)='closeMenu()'>Chores</a></span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span><a routerLink='/shopping-list' routerLinkActive='active' (click)='closeMenu()'>Shopping List</a></span>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-    <!-- Navbar brand -->
-    <mdb-navbar-brand><a class="navbar-brand" href="#">Lawry 2A</a></mdb-navbar-brand>
-
-    <!-- Collapsible content -->
-    <links>
-
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink='/' routerLinkActive='active'>Home<span
-              class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink='/shower-queue' routerLinkActive='active'>Shower
-            Queue</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink='/chores' routerLinkActive='active'>Chores</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink='/shopping-list' routerLinkActive='active'>Shopping
-            List</a>
-        </li>
-      </ul>
-      <!-- Links -->
-    </links>
-    <!-- Collapsible content -->
-
-  </mdb-navbar>
-  <!--/.Navbar-->
   <router-outlet></router-outlet>
+
 
 
 </body>
