@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "lawry-a2": {
+      "hosting": {
+        "lawry-a2": [
+          "lawry-a2"
+        ]
+      }
+    }
+  }
+}
